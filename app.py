@@ -4,7 +4,7 @@ import datetime
 
 
 URL = os.environ.get('TARGET_HOST')
-response = requests.get(URL)
+response = requests.get(URL, timeout=5)
 time_date = datetime.datetime.now()
 status = f"{time_date} - Health check successful:{response.status_code}"
 print(status)
