@@ -1,0 +1,15 @@
+services:
+  core-router:
+    image: nginx
+    ports:
+      - "8080:80"
+
+  python-script:
+    build: .
+    image: app-devnet
+    volumes:
+      - ./:/app
+    command: python app.py
+    environment:
+      - TARGET_HOST=http://core-router
+
